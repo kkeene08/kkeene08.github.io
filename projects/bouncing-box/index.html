@@ -75,9 +75,13 @@
         function update() {
           moveBoxTo(positionX);
           positionX = positionX + speed;
-        } if (positionX > boardWidth) {
-          speed = -1
+          if (positionX > boardWidth) {
+          speed = speed * -1 
         }
+        if (positionX < 0) {
+          speed = speed * -1 
+        }
+        } 
 
         /* 
 			This Function will be called each time the box is clicked. Each time it is called,
@@ -88,7 +92,12 @@
           positionX = 0;
           changeBoxText(points);
 		  points = points + 1
-		  speed = speed + 3
+      if (speed > 0){
+        speed = speed + 3
+      } else if (speed < 0) {
+        speed = speed - 3
+      }
+
         }
       })();
     </script>
